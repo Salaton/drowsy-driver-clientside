@@ -4,14 +4,30 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
- <form method="POST" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+      <div>
+        {{ field.label_tag }}
+        {{ field }}
+        {% comment %} {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %} {% endcomment %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+ {% comment %} <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         
         <button type="submit">Upload</button>
 
         
-</form> 
+</form>  {% endcomment %}
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 
 <div class="container max-w-full mx-auto md:py-24 px-6">
