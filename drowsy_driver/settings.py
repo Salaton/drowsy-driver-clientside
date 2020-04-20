@@ -127,3 +127,6 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Registering tailwind css
 TAILWIND_APP_NAME = 'theme'
+# To handle file uploads..
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
