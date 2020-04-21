@@ -6,4 +6,4 @@ class DrowsyDriverUser(AbstractUser):
     """Custom drowsy driver that inherits form User."""
 
     car_registration_number = models.CharField(max_length=10)
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to="images/")
