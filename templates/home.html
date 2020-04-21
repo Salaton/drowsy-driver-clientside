@@ -5,7 +5,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}! Here is your uploaded image {{user.photo}} Car registration: {{user.car_registration_number}}
+  Hi {{ user.username }}! {{user.email}} Car registration no: {{user.car_registration_number}}
   <p><a href="{% url 'logout' %}">logout</a></p>
 {% else %}
   <p>You are not logged in</p>
