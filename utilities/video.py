@@ -1,25 +1,28 @@
 import datetime
 import os
+import threading
 
 import cv2
 import dlib
 
 import numpy
 from imutils import face_utils
-from pymongo import MongoClient
+
+# from pymongo import MongoClient
 from scipy.spatial import distance
 
 import pyglet
 
 # connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string, using pymongo!
-client = MongoClient(port=27017)
+# client = MongoClient(port=27017)
 # Creating the new db
-db = client.drowsy_test
+# db = client.drowsy_test
 
 
 def vid():
     def driverprofile():
         driverprofile.names = input("Enter your name : ")
+
         driverprofile.regNo = input("Enter your reg no : ")
         # driverprofile.email = input('Enter your email address : ')
         driverprofile.phoneNumber = input("Enter your phone number: ")
@@ -39,7 +42,7 @@ def vid():
     # Function that raises alarm
 
     def raise_alarm():
-        alarm = pyglet.resource.media("watch.wav")
+        alarm = pyglet.resource.media("utilities/watch.wav")
         alarm.play()
 
         pyglet.app.run()
@@ -66,7 +69,6 @@ def vid():
         getTime = datetime.datetime.now()
         currentTime = getTime.strftime("%H:%M:%S")
         print(f"The alarm was raised at: {currentTime},with an eye threshold of: {ear}")
-        return currentTime
 
         # Later on, the time will be written to a file (idea is to create a dataset) for analysis and predictions..
 
@@ -78,6 +80,7 @@ def vid():
     EYE_AR_CONSEC_FRAMES = 3
 
     WARNING_COUNTER = 0
+    RAISED_ALARM = False
     TOTAL = 0
 
     """Getting the coordinates of the left and right eye"""
@@ -85,21 +88,23 @@ def vid():
     (right_eye_start, right_eye_end) = face_utils.FACIAL_LANDMARKS_68_IDXS["right_eye"]
 
     # load XML classifier
-    face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+    face_cascade = cv2.CascadeClassifier(
+        "utilities/haarcascade_frontalface_default.xml"
+    )
 
     # load eye classifier
-    eye_cascade = cv2.CascadeClassifier("haarcascade_eye_tree_eyeglasses.xml")
+    eye_cascade = cv2.CascadeClassifier("utilities/haarcascade_eye_tree_eyeglasses.xml")
     # check if classifier is loaded for error handling..
     loaded = cv2.CascadeClassifier.empty(face_cascade)
     print(f"{loaded}: The classifier is loaded correctly, ready to identify the face")
-    if loaded is True:
+    if loaded == True:
         print("You need to load the classifier")
 
     # Start the video stream
     # capture = cv2.VideoCapture('https://192.168.100.7:8080/video')
     capture = cv2.VideoCapture(0)
 
-    eye_predictor_path = "shape_predictor_68_face_landmarks.dat"
+    eye_predictor_path = "utilities/shape_predictor_68_face_landmarks.dat"
     # Detector model
     faceDetector = dlib.get_frontal_face_detector()
     # predictor model
@@ -150,7 +155,7 @@ def vid():
         # capture frame by frame (returns true or false)
         ret, frame = capture.read()
 
-        if ret is False:
+        if ret == False:
             print("Camera Failed to start...")
 
         # operation on the frames
@@ -203,18 +208,32 @@ def vid():
                 WARNING_COUNTER += 1
 
                 if WARNING_COUNTER > EYE_EAR_THRESH:
-                    # We get the time the alarm was raised...
-                    getTimeAlarmWasRaised(eyeaspect_ratio)
-                    os.system(
-                        'spd-say "Drowsiness levels detected! You might need to take a break"'
-                    )
+                    if not RAISED_ALARM:
+                        RAISED_ALARM = True
 
-                    # raise_alarm()
+                        # We get the time the alarm was raised...
+                        getTimeAlarmWasRaised(eyeaspect_ratio)
+                        # os.system(
+                        #     'spd-say "Drowsiness levels detected! You might need to take a break"')
 
-                    # cv2.putText(img, 'Drowsiness Detected!!!!', (5, 30),
-                    #             cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-                else:
-                    break
+                        # raise_alarm()
+                        # Having the alarm function running as a thread
+                        alarmThread = threading.Thread(target=raise_alarm)
+                        alarmThread.daemon = True
+                        alarmThread.start()
+
+                        cv2.putText(
+                            img,
+                            "Drowsiness Detected!!!!",
+                            (5, 30),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            1,
+                            (0, 0, 255),
+                            2,
+                        )
+            else:
+                WARNING_COUNTER = 0
+                RAISED_ALARM = False
             # ROI for the face so that eyes can be detected
             roi_gray = gray[y1:y2, x1:x2]
             roi_color = gray[y1:y2, x1:x2]
@@ -240,9 +259,6 @@ def vid():
             #             font, fontScale, fontColor, lineType)
             # cv2.putText(img, driverprofile.nextOfKin, (x, y+h+150),
             #             font, fontScale, fontColor, lineType)
-        # landmarks = get_eyeLandmarks(capture)
-        # video_with_landmarks = plot_numberOnEyes(capture, landmarks)
-        # display resulting frame
         cv2.imshow("gray", gray)
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
