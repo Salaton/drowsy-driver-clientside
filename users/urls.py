@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     # path('login/', views.Login, name='login'),
-    path('signup/', views.SignUp, name='signup')
+    path("signup/", views.SignUp, name="signup"),
+    path("home/", views.RunOpenCV, name="RunOpenCV"),
 ]
