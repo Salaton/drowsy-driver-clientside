@@ -4,7 +4,7 @@
 {% block title %}Home{% endblock %}
 {% load static%}
 {% block content %}
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" id='nav'>
   <div class="container">
   <a class="navbar-brand" href="#">Drowsy Driver</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
   </div>
 </nav>
 {% comment %} Section 1 here {% endcomment %}
-<section class='our-section'>
+<section class='our-section' id='our-section'>
   <div class="container">
     <div>
       <h2 class="animated shake delay-5s">Drowsy Driver Detection System</h2>
@@ -150,6 +150,23 @@ Photo: <img src='{{user.photo.url}}' height="42" width="42">
     </div>
   </div>
 </footer>
+
+<script src='{%static "js/three.r95.min.js"%}'></script>
+<script src='{%static "js/vanta.net.min.js"%}'></script>
+<script>
+VANTA.NET({
+  el: "#our-section",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  backgroundColor: 0xffffff
+})
+</script>
+
 {% endblock %}
 
 
