@@ -13,6 +13,9 @@ from scipy.spatial import distance
 
 import pyglet
 
+from users.views import GetUserDetails
+
+
 # connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string, using pymongo!
 # client = MongoClient(port=27017)
 # Creating the new db
@@ -20,25 +23,6 @@ import pyglet
 
 
 def vid():
-    def driverprofile():
-        driverprofile.names = input("Enter your name : ")
-
-        driverprofile.regNo = input("Enter your reg no : ")
-        # driverprofile.email = input('Enter your email address : ')
-        driverprofile.phoneNumber = input("Enter your phone number: ")
-        driverprofile.nextOfKin = input("Enter your next of kin number: ")
-
-        # database schema
-        details = {
-            "name": driverprofile.names,
-            "regNo": driverprofile.regNo,
-            # 'email': driverprofile.email,
-            "phoneNumber": driverprofile.phoneNumber,
-            "nextOfKin": driverprofile.nextOfKin,
-        }
-        result = db.driverdetails.insert(details)
-        print(f"finished inserting {result} details into the db")
-
     # Function that raises alarm
 
     def raise_alarm():
@@ -82,7 +66,6 @@ def vid():
     WARNING_COUNTER = 0
     RAISED_ALARM = False
     TOTAL = 0
-
     """Getting the coordinates of the left and right eye"""
     (left_eye_start, left_eye_end) = face_utils.FACIAL_LANDMARKS_68_IDXS["left_eye"]
     (right_eye_start, right_eye_end) = face_utils.FACIAL_LANDMARKS_68_IDXS["right_eye"]
@@ -146,8 +129,6 @@ def vid():
                 color=(255, 255, 255),
             )
             cv2.circle(vid, position, 3, color=(255, 255, 255))
-
-    # driverprofile()
 
     # Start looping over the frames
     while True:
