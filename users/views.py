@@ -39,8 +39,8 @@ def SignUp(request):
     return render(request, "signup.html", {"form": form})
 
 
-def status_list():
-    return DrowsyDriverUser.objects.all()
+def status_list(request):
+    return DrowsyDriverUser.objects.get(request.user.username)
 
 
 # Running an external python script..
@@ -55,4 +55,4 @@ def RunOpenCV(request):
 def profile(request):
     # Create a dictionary for the details..
     args = {"User": request.user}
-    return render(request, "profile.html", args)
+    return render(request, "profile.html", {"args": args})
