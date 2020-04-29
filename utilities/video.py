@@ -25,28 +25,28 @@ from users.views import status_list
 
 def vid():
 
-    login_url = "http://localhost:8000/accounts/login/"
-    profile_url = "http://127.0.0.1:8000/accounts/profile"
+    # login_url = "http://localhost:8000/accounts/login/"
+    # profile_url = "http://127.0.0.1:8000/accounts/profile"
 
-    request = requests.Session()
-    response = request.get(profile_url)
+    # request = requests.Session()
+    # response = request.get(profile_url)
 
-    token = response.cookies["csrftoken"]
-    print(token)
+    # token = response.cookies["csrftoken"]
+    # print(token)
 
-    # response = request.get(profile_url, data={"csrfmiddlewaretoken": token})
+    # # response = request.get(profile_url, data={"csrfmiddlewaretoken": token})
+    # # print(response.text)
+
+    # response = request.get(
+    #     profile_url,
+    #     data={
+    #         "username": "Timo",
+    #         "password": "$krychowiak-254$",
+    #         "csrfmiddlewaretoken": token,
+    #         "next": "/",
+    #     },
+    # )
     # print(response.text)
-
-    response = request.get(
-        profile_url,
-        data={
-            "username": "Timo",
-            "password": "$krychowiak-254$",
-            "csrfmiddlewaretoken": token,
-            "next": "/",
-        },
-    )
-    print(response.text)
     # browser = Firefox()
     # browser.get("http://localhost:8000/accounts/login/")
     # username = browser.find_element_by_id("username").send_keys("Timo")
@@ -59,35 +59,20 @@ def vid():
     # print(status_list)
     # print(status_list)
     # Search GitHub's repositories for requests
-<<<<<<< HEAD
-    # response = requests.get("http://localhost:8000/accounts/profile/")
-    # print(response.text)
-    # s = requests.Session()
-    # r = s.get("http://127.0.0.1:8000/accounts/profile")
-    # cookies = requests.utils.dict_from_cookiejar(s.cookies)
-    # print(f"Cookies: {cookies}")
-    # csrf = cookies["csrftoken"]
-
-    # r = s.post(
-    #     r.url,
-    #     data={
-    #         "csrfmiddlewaretoken": csrf,
-    #         "username": "Timo",
-    #         "password": "$krychowiak-254$",
-    #     },
-    # )
-
-    # print(r.json)
-=======
     session = requests.Session()
     response = session.get("http://localhost:8000/accounts/login/")
     cookies = requests.utils.dict_from_cookiejar(session.cookies)
-    csrf = cookies['csrftoken']
-    response = session.post("http://localhost:8000/accounts/login/", data={'csrfmiddlewaretoken':csrf, 'username':'my_user', 
-                        'password':'password'})
-           
+    csrf = cookies["csrftoken"]
+    response = session.post(
+        "http://localhost:8000/accounts/login/",
+        data={
+            "csrfmiddlewaretoken": csrf,
+            "username": "my_user",
+            "password": "password",
+        },
+    )
+
     print(response.text)
->>>>>>> origin/run-opencv-custom-command
 
     # Function that raises alarm
 
