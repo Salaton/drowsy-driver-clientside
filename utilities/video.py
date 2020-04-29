@@ -10,6 +10,12 @@ import numpy
 from imutils import face_utils
 
 from scipy.spatial import distance
+from selenium import webdriver
+from selenium.webdriver import Firefox
+from getpass import getpass
+
+
+# from selenium.webdriver.Firefox.options import Option
 
 import pyglet
 
@@ -18,12 +24,59 @@ from users.views import status_list
 
 
 def vid():
+
+    login_url = "http://localhost:8000/accounts/login/"
+    profile_url = "http://127.0.0.1:8000/accounts/profile"
+
+    request = requests.Session()
+    response = request.get(profile_url)
+
+    token = response.cookies["csrftoken"]
+    print(token)
+
+    # response = request.get(profile_url, data={"csrfmiddlewaretoken": token})
+    # print(response.text)
+
+    response = request.get(
+        profile_url,
+        data={
+            "username": "Timo",
+            "password": "$krychowiak-254$",
+            "csrfmiddlewaretoken": token,
+            "next": "/",
+        },
+    )
+    print(response.text)
+    # browser = Firefox()
+    # browser.get("http://localhost:8000/accounts/login/")
+    # username = browser.find_element_by_id("username").send_keys("Timo")
+    # browser.find_element_by_id("password").send_keys("$krychowiak-254$")
+    # browser.find_element_by_id("signin").click()
+
+    # print(username)
     # Finding the user details
     # current_user = status_list()
-    # print(status_list())
+    # print(status_list)
+    # print(status_list)
     # Search GitHub's repositories for requests
-    response = requests.get("http://localhost:8000/accounts/profile/")
-    print(response.text)
+    # response = requests.get("http://localhost:8000/accounts/profile/")
+    # print(response.text)
+    # s = requests.Session()
+    # r = s.get("http://127.0.0.1:8000/accounts/profile")
+    # cookies = requests.utils.dict_from_cookiejar(s.cookies)
+    # print(f"Cookies: {cookies}")
+    # csrf = cookies["csrftoken"]
+
+    # r = s.post(
+    #     r.url,
+    #     data={
+    #         "csrfmiddlewaretoken": csrf,
+    #         "username": "Timo",
+    #         "password": "$krychowiak-254$",
+    #     },
+    # )
+
+    # print(r.json)
 
     # Function that raises alarm
 
