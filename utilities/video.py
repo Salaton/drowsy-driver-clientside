@@ -1,6 +1,7 @@
 import datetime
 import os
 import threading
+import requests
 
 import cv2
 import dlib
@@ -8,21 +9,22 @@ import dlib
 import numpy
 from imutils import face_utils
 
-# from pymongo import MongoClient
 from scipy.spatial import distance
 
 import pyglet
 
-from users.views import GetUserDetails
-
-
-# connect to MongoDB, change the << MONGODB URL >> to reflect your own connection string, using pymongo!
-# client = MongoClient(port=27017)
-# Creating the new db
-# db = client.drowsy_test
+from users.models import DrowsyDriverUser
+from users.views import status_list
 
 
 def vid():
+    # Finding the user details
+    # current_user = status_list()
+    # print(status_list())
+    # Search GitHub's repositories for requests
+    response = requests.get("http://localhost:8000/accounts/profile/")
+    print(response.text)
+
     # Function that raises alarm
 
     def raise_alarm():
