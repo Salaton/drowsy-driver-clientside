@@ -59,6 +59,7 @@ def vid():
     # print(status_list)
     # print(status_list)
     # Search GitHub's repositories for requests
+<<<<<<< HEAD
     # response = requests.get("http://localhost:8000/accounts/profile/")
     # print(response.text)
     # s = requests.Session()
@@ -77,6 +78,16 @@ def vid():
     # )
 
     # print(r.json)
+=======
+    session = requests.Session()
+    response = session.get("http://localhost:8000/accounts/login/")
+    cookies = requests.utils.dict_from_cookiejar(session.cookies)
+    csrf = cookies['csrftoken']
+    response = session.post("http://localhost:8000/accounts/login/", data={'csrfmiddlewaretoken':csrf, 'username':'my_user', 
+                        'password':'password'})
+           
+    print(response.text)
+>>>>>>> origin/run-opencv-custom-command
 
     # Function that raises alarm
 
