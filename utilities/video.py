@@ -10,69 +10,31 @@ import numpy
 from imutils import face_utils
 
 from scipy.spatial import distance
-from selenium import webdriver
-from selenium.webdriver import Firefox
-from getpass import getpass
-
-
-# from selenium.webdriver.Firefox.options import Option
+import json
 
 import pyglet
 
-from users.models import DrowsyDriverUser
-from users.views import status_list
+# from users.models import DrowsyDriverUser
+# from users.views import status_list
 
 
-def vid():
+def vid(user):
+    user = json.loads(user[0])
 
-    # login_url = "http://localhost:8000/accounts/login/"
-    # profile_url = "http://127.0.0.1:8000/accounts/profile"
-
-    # request = requests.Session()
-    # response = request.get(profile_url)
-
-    # token = response.cookies["csrftoken"]
-    # print(token)
-
-    # # response = request.get(profile_url, data={"csrfmiddlewaretoken": token})
-    # # print(response.text)
-
-    # response = request.get(
-    #     profile_url,
+    # session = requests.Session()
+    # response = session.get("http://localhost:8000/accounts/profile")
+    # cookies = requests.utils.dict_from_cookiejar(session.cookies)
+    # csrf = cookies["csrftoken"]
+    # response = session.post(
+    #     response.url,
     #     data={
-    #         "username": "Timo",
-    #         "password": "$krychowiak-254$",
-    #         "csrfmiddlewaretoken": token,
-    #         "next": "/",
+    #         "csrfmiddlewaretoken": csrf,
+    #         "username": "user",
+    #         "password": "password1224",
     #     },
     # )
+
     # print(response.text)
-    # browser = Firefox()
-    # browser.get("http://localhost:8000/accounts/login/")
-    # username = browser.find_element_by_id("username").send_keys("Timo")
-    # browser.find_element_by_id("password").send_keys("$krychowiak-254$")
-    # browser.find_element_by_id("signin").click()
-
-    # print(username)
-    # Finding the user details
-    # current_user = status_list()
-    # print(status_list)
-    # print(status_list)
-    # Search GitHub's repositories for requests
-    session = requests.Session()
-    response = session.get("http://localhost:8000/accounts/login/")
-    cookies = requests.utils.dict_from_cookiejar(session.cookies)
-    csrf = cookies["csrftoken"]
-    response = session.post(
-        "http://localhost:8000/accounts/login/",
-        data={
-            "csrfmiddlewaretoken": csrf,
-            "username": "my_user",
-            "password": "password",
-        },
-    )
-
-    print(response.text)
 
     # Function that raises alarm
 
@@ -275,14 +237,21 @@ def vid():
             for (ex, ey, ew, eh) in eyes:
                 cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
 
-            # font = cv2.FONT_HERSHEY_SIMPLEX
-            # bottomLeftCornerOfText = (x, y+h+30)
-            # fontScale = 1
-            # fontColor = (255, 255, 255)
-            # lineType = 2
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            bottomLeftCornerOfText = (x, y + h + 30)
+            fontScale = 1
+            fontColor = (255, 255, 255)
+            lineType = 2
 
-            # cv2.putText(img, driverprofile.names, (x, y+h+30),
-            #             font, fontScale, fontColor, lineType)
+            cv2.putText(
+                img,
+                user["first_name"],
+                (5, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                1,
+                (0, 0, 255),
+                2,
+            )
             # cv2.putText(img, driverprofile.regNo, (x, y+h+60),
             #             font, fontScale, fontColor, lineType)
             # # cv2.putText(img, driverprofile.email, (x, y+h+90),
@@ -298,3 +267,7 @@ def vid():
     # when everything is dones, release the capture
     capture.release()
     cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    vid()
