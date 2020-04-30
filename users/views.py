@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.core.management import call_command
 from .models import DrowsyDriverUser
+import json
 
 
 # Create your views here.
@@ -15,9 +16,6 @@ from .models import DrowsyDriverUser
 
 def Login(request):
     return render(request, "login.html", {})
-
-
-# from .models import PassportPhoto
 
 
 def SignUp(request):
@@ -43,10 +41,15 @@ def status_list(request):
     return DrowsyDriverUser.objects.get(request.user.username)
 
 
-# Running an external python script..
+# Running an external python script --> the custom command (python manage.py video)..
 @login_required()
 def RunOpenCV(request):
-    call_command("video")
+    user_details = {
+        "username": request.user.username,
+        "first_name": request.user.first_name,
+        "last_name": request.user.last_name,
+    }
+    call_command("video", json.dumps(user_details))
     return render(request, "home.html", {})
 
 
