@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "tailwind",
     "theme",
     "users",
+    "phonenumber_field",
+    "driver_stats",
 ]
 
 AUTH_USER_MODEL = "users.DrowsyDriverUser"  # Custom user created
@@ -80,8 +82,12 @@ WSGI_APPLICATION = "drowsy_driver.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "drowsy_driver",
+        "USER": "salaton",
+        "PASSWORD": "salatonelvis",
+        "HOST": "localhost",
+        "PORT": "",
     }
 }
 
@@ -126,3 +132,6 @@ TAILWIND_APP_NAME = "theme"
 # To handle file uploads..
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Phonenumber format
+PHONENUMBER_DB_FORMAT = "INTERNATIONAL"
