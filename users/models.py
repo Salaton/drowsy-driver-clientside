@@ -8,4 +8,4 @@ class DrowsyDriverUser(AbstractUser):
 
     car_registration_number = models.CharField(max_length=10)
     next_of_kin_name = models.CharField(max_length=31, default="")
-    next_of_kin_number = PhoneNumberField(blank=False, default="")
+    next_of_kin_number = models.CharField(max_length=30, blank=False, default="")

@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.core.management import call_command
+from django.core import serializers
 from .models import DrowsyDriverUser
 import json
 
@@ -48,6 +49,9 @@ def RunOpenCV(request):
         "username": request.user.username,
         "first_name": request.user.first_name,
         "last_name": request.user.last_name,
+        "car_registration_number": request.user.car_registration_number,
+        "next_of_kin_name": request.user.next_of_kin_name,
+        "next_of_kin_number": request.user.next_of_kin_number,
     }
     call_command("video", json.dumps(user_details))
     return render(request, "home.html", {})
