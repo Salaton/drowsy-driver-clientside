@@ -14,27 +14,11 @@ import json
 
 import pyglet
 
-# from users.models import DrowsyDriverUser
-# from users.views import status_list
+from driver_stats.models import Stats
 
 
 def vid(user):
     user = json.loads(user[0])
-
-    # session = requests.Session()
-    # response = session.get("http://localhost:8000/accounts/profile")
-    # cookies = requests.utils.dict_from_cookiejar(session.cookies)
-    # csrf = cookies["csrftoken"]
-    # response = session.post(
-    #     response.url,
-    #     data={
-    #         "csrfmiddlewaretoken": csrf,
-    #         "username": "user",
-    #         "password": "password1224",
-    #     },
-    # )
-
-    # print(response.text)
 
     # Function that raises alarm
 
@@ -68,6 +52,18 @@ def vid(user):
         print(f"The alarm was raised at: {currentTime},with an eye threshold of: {ear}")
 
         # Later on, the time will be written to a file (idea is to create a dataset) for analysis and predictions..
+
+    # Function to post details to the Database...
+    def post_details_toDB(eye_aspect):
+        statistics = Stats(
+            first_name=user["first_name"],
+            username=user["username"],
+            eye_aspect_ratio=eye_aspect,
+            # time_alarm_raised = time_alarm_raised
+            car_registration_number=user["car_registration_number"],
+        )
+
+        statistics.save()
 
     """
     # EAR to show a blink. If EAR falls below the threshold and then rises, that's a blink
@@ -225,6 +221,12 @@ def vid(user):
                             (0, 0, 255),
                             2,
                         )
+                        posting_db_thread = threading.Thread(
+                            target=post_details_toDB, args=(eyeaspect_ratio,)
+                        )
+                        posting_db_thread.daemon = True
+                        posting_db_thread.start()
+
             else:
                 WARNING_COUNTER = 0
                 RAISED_ALARM = False
