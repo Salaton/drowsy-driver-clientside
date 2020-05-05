@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "users",
     "phonenumber_field",
     "driver_stats",
+    "crispy_forms",
 ]
 
 AUTH_USER_MODEL = "users.DrowsyDriverUser"  # Custom user created
