@@ -1,67 +1,16 @@
 <!-- templates/signup.html -->
 {% extends 'base.html' %}
-
+{% load static  %}
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-
-{% comment %} <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form %}
-      <div class="mx-auto max-w-lg">
-        {{ field.label_tag }}
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %} 
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </div>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-</form>  {% endcomment %}
-
-{% comment %} <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    
-      <div>
-        {{ form.username.label }}
-        {{ form.username }}
-
-        {{ form.first_name.label }}
-        {{ form.first_name }}
-
-        {{ form.last_name.label }}
-        {{ form.last_name }}
-
-        {{ form.email.label }}
-        {{ form.email }}
-
-        {{ form.password1.label }}
-        {{ form.password1 }}
-
-        {{ form.password2.label }}
-        {{ form.password2 }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %} 
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        
-      </div>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-</form> {% endcomment %}
-
-
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 
 <div class="container max-w-full mx-auto md:py-24 px-6">
   <div class="max-w-sm mx-auto px-6">
-        <div class="relative flex flex-wrap">
-            <div class="w-full relative">
-                <div class="md:mt-6">
+        <div class="relative flex flex-wrap ">
+            <div class="w-full relative ">
+                <div class="md:mt-6 ">
                     <div class="text-center font-semibold text-black">
                         Sign Up
                     </div>
@@ -205,4 +154,21 @@
         </div>
     </div>
 </div>
+{% comment %} <script src='{%static "js/three.r95.min.js"%}'></script>
+<script src='{%static "js/vanta.net.min.js"%}'></script>
+<script>
+VANTA.NET({
+  el: "#container",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  backgroundColor: 0xffffff
+})
+</script> {% endcomment %}
 {% endblock %}
+
+
