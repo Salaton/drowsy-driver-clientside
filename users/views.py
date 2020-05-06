@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
 from django.shortcuts import render
 from django.core.management import call_command
 from django.core import serializers
@@ -63,3 +64,16 @@ def profile(request):
     # Create a dictionary for the details..
     args = {"User": request.user}
     return render(request, "profile.html", {"args": args})
+
+
+def edit_profile(request):
+    if request.method == "POST":
+        form = DrowsyDriverUserChangeForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+    else:
+        form = DrowsyDriverUserChangeForm(instance=request.user)
+        # args = {"form": form}
+    return render(request, "profile.html", {"form": form})
