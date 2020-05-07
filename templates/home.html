@@ -12,7 +12,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       {% if user.is_authenticated %}
       <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
       <a class="nav-item nav-link" href="{% url 'stats' %}">Statistics</a>
@@ -50,8 +50,8 @@
 
 {% comment %} Section 2.. How to go about things... {% endcomment %}
 <section class='section-2'>
-  <div class="overlay">
-    <div class="inner-section">
+  <div class="overlay-section-2">
+    <div class="inner-section-2">
       <div>
         <h3>How things work around here</h3>
         <h2>Usalama lazima!</h2>
