@@ -136,3 +136,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Phonenumber format
 PHONENUMBER_DB_FORMAT = "INTERNATIONAL"
+
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
