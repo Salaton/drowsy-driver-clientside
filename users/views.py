@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 from .forms import DrowsyDriverUserChangeForm, DrowsyDriverUserCreationForm
 from django import forms
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.shortcuts import render
 from django.core.management import call_command
-from django.core import serializers
 from .models import DrowsyDriverUser
 import json
 
@@ -39,8 +39,8 @@ def SignUp(request):
     return render(request, "signup.html", {"form": form})
 
 
-def status_list(request):
-    return DrowsyDriverUser.objects.get(request.user.username)
+# def status_list(request):
+#     return DrowsyDriverUser.objects.get(request.user.username)
 
 
 # Running an external python script --> the custom command (python manage.py video)..
@@ -59,13 +59,15 @@ def RunOpenCV(request):
 
 
 # User Profile
-# @login_required()
+@login_required()
 def profile(request):
     # Create a dictionary for the details..
     args = {"User": request.user}
     return render(request, "profile.html", {"args": args})
 
 
+# Gets current user details --> User can change them anytime...
+@login_required()
 def edit_profile(request):
     if request.method == "POST":
         form = DrowsyDriverUserChangeForm(request.POST, instance=request.user)
@@ -77,3 +79,21 @@ def edit_profile(request):
         form = DrowsyDriverUserChangeForm(instance=request.user)
         # args = {"form": form}
     return render(request, "profile.html", {"form": form})
+
+
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, "Your password was successfully updated!")
+            return redirect("profile")
+        else:
+            messages.error(request, "Please correct the error below.")
+            # return redirect("registration/change_password")
+    else:
+        form = PasswordChangeForm(user=request.user)
+        # args = {"form": form}
+    return render(request, "registration/change_password.html", {"form": form})
