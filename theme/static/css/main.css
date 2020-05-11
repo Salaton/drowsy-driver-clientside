@@ -1,5 +1,6 @@
 .navbar {
-	font-size: 1.2rem;
+	font-size: 1.4rem;
+	font-family: "Zilla Slab", serif;
 }
 
 .container {
@@ -19,6 +20,7 @@
 
 .our-section {
 	margin: 3rem 0;
+	font-family: "Zilla Slab", serif;
 }
 
 .our-section .container {
@@ -32,10 +34,15 @@
 .our-section h2 {
 	font-size: 4rem;
 	color: black;
+	/* font-family: "Montserrat", sans-serif; */
+	/* font-family: "Dosis", sans-serif; */
+	/* font-family: "Zilla Slab", serif; */
 }
 
 .our-section p {
 	margin: 1rem 0;
+	font-size: 20px;
+	/* font-family: "Zilla Slab", serif; */
 }
 /* Section 2 */
 
@@ -43,6 +50,7 @@
 	position: relative;
 	background: url("../img/dash.jpeg") no-repeat bottom center/cover;
 	height: 500px;
+	font-family: "Zilla Slab", serif;
 }
 .overlay-section-2 {
 	position: absolute;
@@ -85,6 +93,7 @@
 	padding-bottom: 3rem;
 	width: 100%;
 	height: 100%;
+	font-family: "Zilla Slab", serif;
 }
 
 .card-section .container .inner:hover {
@@ -97,6 +106,7 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	color: #fff;
 	padding: 2rem 0;
+	font-family: "Zilla Slab", serif;
 }
 .section-footer .container {
 	display: grid;
