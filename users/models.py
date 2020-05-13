@@ -1,9 +1,16 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.validators import RegexValidator
+
+phone_validator = RegexValidator(
+    r"\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$",
+    "Enter a valid phone number E.g +254700000000",
+)
 
 
 class DrowsyDriverUser(AbstractUser):
     """Custom drowsy driver that inherits form User."""
 
     car_registration_number = models.CharField(max_length=10)
-    photo = models.ImageField(upload_to="images/")
+    next_of_kin_name = models.CharField(max_length=31)
+    next_of_kin_number = models.CharField(max_length=30, validators=[phone_validator])

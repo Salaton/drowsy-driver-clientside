@@ -1,1 +1,3 @@
-Pillow==7.1.1
+dlib==19.19.0
+opencv-python==4.2.0.34
+pyglet==1.5.3

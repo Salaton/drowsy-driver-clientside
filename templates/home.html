@@ -4,16 +4,18 @@
 {% block title %}Home{% endblock %}
 {% load static%}
 {% block content %}
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-light" id='nav'>
   <div class="container">
   <a class="navbar-brand" href="#">Drowsy Driver</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler bg-blue-500" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       {% if user.is_authenticated %}
+      <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+      <a class="nav-item nav-link" href="{% url 'stats' %}">Statistics</a>
       <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
       <a class="nav-item nav-link" href="#">Signed In As {{ user.username }}</a>
       {% else %}
@@ -25,7 +27,7 @@
   </div>
 </nav>
 {% comment %} Section 1 here {% endcomment %}
-<section class='our-section'>
+<section class='our-section' id='our-section'>
   <div class="container">
     <div>
       <h2 class="animated shake delay-5s">Drowsy Driver Detection System</h2>
@@ -35,19 +37,21 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
+      <a href="{% url 'RunOpenCV' %}">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
         Get Started!
       </button>
+      </a>
     </div>
-    <img src='{%static "img/driver1.jpeg"%}' alt='' >
+    <img src='{%static "img/driving.png"%}' alt='' >
   
   </div>
 </section>
 
 {% comment %} Section 2.. How to go about things... {% endcomment %}
 <section class='section-2'>
-  <div class="overlay">
-    <div class="inner-section">
+  <div class="overlay-section-2">
+    <div class="inner-section-2">
       <div>
         <h3>How things work around here</h3>
         <h2>Usalama lazima!</h2>
@@ -148,6 +152,23 @@ Photo: <img src='{{user.photo.url}}' height="42" width="42">
     </div>
   </div>
 </footer>
+
+<script src='{%static "js/three.r95.min.js"%}'></script>
+<script src='{%static "js/vanta.net.min.js"%}'></script>
+<script>
+VANTA.NET({
+  el: "#our-section",
+  mouseControls: true,
+  touchControls: true,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  backgroundColor: 0xffffff
+})
+</script>
+
 {% endblock %}
 
 
