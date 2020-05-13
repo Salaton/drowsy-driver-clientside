@@ -1,26 +1,26 @@
 import datetime
+import json
 import os
 import threading
-import requests
+
+import africastalking
 
 import cv2
 import dlib
-
 import numpy
-from imutils import face_utils
-
-from scipy.spatial import distance
-import json
-
 import pyglet
+import requests
+from imutils import face_utils
+from scipy.spatial import distance
 
 from driver_stats.models import Stats
+from decouple import config
 
 
 def vid(user):
     user = json.loads(user[0])
 
-    # Function that raises alarm
+    """ Function that raises alarm"""
 
     def raise_alarm():
         alarm = pyglet.resource.media("utilities/watch.wav")
@@ -28,7 +28,37 @@ def vid(user):
 
         pyglet.app.run()
 
-    # Computing the EYE ASPECT RATIO to determine blinking..
+    """Function that sends an alert to next of kin"""
+
+    def send_alert(nextofkin_number):
+        # Initialize SDK
+        username = config("AFRICASTALKING_USERNAME")
+        api_key = config("AFRICASTALKING_SECRET_KEY")
+        africastalking.initialize(username, api_key)
+
+        # Initialize a service e.g. SMS
+        sms = africastalking.SMS
+
+        # Use the service synchronously
+        # response = sms.send("Wassup broskii", ["+254719158559"])
+        # print(response)
+
+        # Or use it asynchronously
+        def on_finish(error, response):
+            if error is not None:
+                raise error
+            print(response)
+
+        getTime = datetime.datetime.now()
+        currentTime = getTime.strftime("%H:%M")
+        receiver = user["next_of_kin_name"]
+        driver = user["first_name"]
+        message = f"Hello there {receiver}, driver {driver} has been reported to be asleep at exactly {currentTime}"
+        sms.send(
+            message, [nextofkin_number], callback=on_finish,
+        )
+
+    """Computing the EYE ASPECT RATIO to determine blinking.."""
 
     def eyeAspectRatio(eyelandmark):
         # Computing the vertical parts
@@ -48,7 +78,7 @@ def vid(user):
 
     def getTimeAlarmWasRaised(ear):
         getTime = datetime.datetime.now()
-        currentTime = getTime.strftime("%H:%M:%S")
+        currentTime = getTime.strftime("%H:%M")
         print(f"The alarm was raised at: {currentTime},with an eye threshold of: {ear}")
 
         # Later on, the time will be written to a file (idea is to create a dataset) for analysis and predictions..
@@ -56,8 +86,10 @@ def vid(user):
     # Function to post details to the Database...
     def post_details_toDB(eye_aspect):
         statistics = Stats(
+            # user=user,
             first_name=user["first_name"],
             username=user["username"],
+            last_name=user["last_name"],
             eye_aspect_ratio=eye_aspect,
             # time_alarm_raised = time_alarm_raised
             car_registration_number=user["car_registration_number"],
@@ -227,6 +259,12 @@ def vid(user):
                         posting_db_thread.daemon = True
                         posting_db_thread.start()
 
+                        sending_alert_thread = threading.Thread(
+                            target=send_alert, args=(user["next_of_kin_number"],)
+                        )
+                        sending_alert_thread.daemon = True
+                        sending_alert_thread.start()
+
             else:
                 WARNING_COUNTER = 0
                 RAISED_ALARM = False
@@ -247,7 +285,7 @@ def vid(user):
 
             cv2.putText(
                 img,
-                user["first_name"],
+                user["next_of_kin_number"],
                 (5, 30),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
