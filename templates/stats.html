@@ -34,8 +34,8 @@
       <table class="table-auto">
         <thead>
           <tr>
-            <th class="px-4 py-2">Username</th>
             <th class="px-4 py-2">First Name</th>
+            <th class="px-4 py-2">Last Name</th>
             <th class="px-4 py-2">Eye Aspect Ratio</th>
             <th class="px-4 py-2">Time Alarm was raised</th>
             <th class="px-4 py-2">Car registration Number</th>
@@ -44,15 +44,35 @@
         <tbody>
           {% for stats in fetched_statistics  %}
           <tr>
-            <td class="border px-4 py-2">{{stats.username}}</td>
             <td class="border px-4 py-2">{{stats.first_name}}</td>
+            <td class="border px-4 py-2">{{stats.last_name}}</td>
             <td class="border px-4 py-2">{{stats.eye_aspect_ratio}}</td>
             <td class="border px-4 py-2">{{stats.time_alarm_raised}}</td>
             <td class="border px-4 py-2">{{stats.car_registration_number}}</td>
           </tr>
+          {% empty %}
+            <p>There's nothing to show, perhaps you could get started</p>
           {% endfor %}
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+          {% endif %}
+
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+          <li class="page-item"><a class="page-link" href="">/</a></li>
+          <li class="page-item"><a class="page-link"
+              href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+          {% endif %}
+        </ul>
+      </nav>
     </div>
 
 {% endblock %}
