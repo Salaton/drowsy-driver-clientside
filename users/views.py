@@ -1,17 +1,17 @@
-from django.shortcuts import render, redirect
-from .forms import DrowsyDriverUserChangeForm, DrowsyDriverUserCreationForm
-from django import forms
-from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login, update_session_auth_hash
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
-from django.shortcuts import render
-from django.core.management import call_command
-from .models import DrowsyDriverUser
 import json
 
+from django import forms
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm, UserChangeForm
+from django.contrib.auth.models import User
+from django.core.management import call_command
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+
+from .forms import DrowsyDriverUserChangeForm, DrowsyDriverUserCreationForm
+from .models import DrowsyDriverUser
 
 # Create your views here.
 
