@@ -1,4 +1,4 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [path("", views.statistics_page, name="stats")]
+urlpatterns = [path("", views.StatisticsListView.as_view(), name="stats")]
