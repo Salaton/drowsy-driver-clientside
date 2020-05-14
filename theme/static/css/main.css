@@ -25,7 +25,7 @@
 
 .our-section .container {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 	grid-gap: 4rem;
 	align-items: center;
 	justify-content: center;
@@ -43,6 +43,11 @@
 	margin: 1rem 0;
 	font-size: 20px;
 	/* font-family: "Zilla Slab", serif; */
+}
+
+.our-section img {
+	max-width: 100%;
+	height: auto;
 }
 /* Section 2 */
 
@@ -85,7 +90,7 @@
 
 .card-section .container .inner {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 	grid-gap: 4rem;
 	align-items: center;
 	justify-content: center;
@@ -124,10 +129,11 @@
 /* Profile section */
 .profile-section .container {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 	grid-gap: 2rem;
 	align-items: center;
 	justify-content: center;
+	font-family: "Zilla Slab", serif;
 }
 
 /* Password reset done */
