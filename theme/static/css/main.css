@@ -166,3 +166,53 @@
 	max-width: 860px;
 	padding: 2rem 0;
 }
+
+/* Cards section */
+.cards .container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 1300px;
+	justify-content: center;
+	padding-top: 180px;
+	background-image: url("../img/drive_school.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	/* background-position-x: center; */
+	font-family: "Zilla Slab", serif;
+}
+
+.box {
+	background-color: #fff;
+	/* border-top: 3px solid black; */
+	/* background-image: url("../img/dash.jpeg"); */
+	padding: 30px;
+	position: relative;
+	width: 360px;
+	margin: 25px;
+	border-radius: 6px;
+}
+
+.box-push-up {
+	transform: translateY(-50%);
+}
+
+.box h2 {
+	margin: 0;
+}
+
+.box p {
+	font-size: 14px;
+	margin: 15px 0 40px;
+}
+
+.box img {
+	display: block;
+	margin-left: auto;
+}
+
+@media (max-width: 800px) {
+	.box-push-up {
+		transform: translateY(0%);
+	}
+}
