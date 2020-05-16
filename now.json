@@ -5,7 +5,7 @@
 		{
 			"src": "drowsy_driver/wsgi.py",
 			"use": "@ardnt/now-python-wsgi",
-			"config": { "maxLambdaSize": "80mb" }
+			"config": { "maxLambdaSize": "300mb" }
 		}
 	],
 	"routes": [
