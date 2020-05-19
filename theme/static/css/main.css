@@ -210,6 +210,11 @@
 	display: block;
 	margin-left: auto;
 }
+.cards-header {
+	margin: 50px auto;
+	max-width: 500px;
+	text-align: center;
+}
 
 @media (max-width: 800px) {
 	.box-push-up {
