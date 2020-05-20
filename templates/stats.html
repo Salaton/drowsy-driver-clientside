@@ -44,11 +44,11 @@
         <tbody>
           {% for stats in fetched_statistics  %}
           <tr>
-            <td class="border px-4 py-2">{{stats.first_name}}</td>
-            <td class="border px-4 py-2">{{stats.last_name}}</td>
+            <td class="border px-4 py-2">{{user.first_name}}</td>
+            <td class="border px-4 py-2">{{user.last_name}}</td>
             <td class="border px-4 py-2">{{stats.eye_aspect_ratio}}</td>
             <td class="border px-4 py-2">{{stats.time_alarm_raised}}</td>
-            <td class="border px-4 py-2">{{stats.car_registration_number}}</td>
+            <td class="border px-4 py-2">{{user.car_registration_number}}</td>
           </tr>
           {% empty %}
             <p>There's nothing to show, perhaps you could get started</p>
