@@ -14,11 +14,12 @@ from imutils import face_utils
 from scipy.spatial import distance
 
 from driver_stats.models import Stats
+from users.models import DrowsyDriverUser
 from decouple import config
 
 
 def vid(user):
-    user = json.loads(user[0])
+    current_user = json.loads(user[0])
 
     """ Function that raises alarm"""
 
@@ -51,8 +52,8 @@ def vid(user):
 
         getTime = datetime.datetime.now()
         currentTime = getTime.strftime("%H:%M")
-        receiver = user["next_of_kin_name"]
-        driver = user["first_name"]
+        receiver = current_user["next_of_kin_name"]
+        driver = current_user["first_name"]
         message = f"Hello there {receiver}, driver {driver} has been reported to be asleep at exactly {currentTime}"
         sms.send(
             message, [nextofkin_number], callback=on_finish,
@@ -85,15 +86,23 @@ def vid(user):
 
     # Function to post details to the Database...
     def post_details_toDB(eye_aspect):
+        # statistics = Stats(
+        #     # user=user,
+        #     first_name=user["first_name"],
+        #     username=user["username"],
+        #     last_name=user["last_name"],
+        #     eye_aspect_ratio=eye_aspect,
+        #     # time_alarm_raised = time_alarm_raised
+        #     car_registration_number=user["car_registration_number"],
+        # )
         statistics = Stats(
-            # user=user,
-            first_name=user["first_name"],
-            username=user["username"],
-            last_name=user["last_name"],
+            user=DrowsyDriverUser.objects.get(username=current_user["username"]),
             eye_aspect_ratio=eye_aspect,
-            # time_alarm_raised = time_alarm_raised
-            car_registration_number=user["car_registration_number"],
         )
+        # statistics = Stats(
+        #     user=current_user,
+        # )
+        # statistics.user = DrowsyDriverUser()
 
         statistics.save()
 
@@ -197,7 +206,7 @@ def vid(user):
             landmarks = eye_predictor(gray, faces_dlib)
             # convert the face coordinates to Numpy Array
             landmark = face_utils.shape_to_np(landmarks)
-            print(landmark)
+            # print(landmark)
             # landmarks = face_utils.shape_to_np(landmarks)
 
             """Applying landmarks to the face.."""
@@ -259,11 +268,11 @@ def vid(user):
                         posting_db_thread.daemon = True
                         posting_db_thread.start()
 
-                        sending_alert_thread = threading.Thread(
-                            target=send_alert, args=(user["next_of_kin_number"],)
-                        )
-                        sending_alert_thread.daemon = True
-                        sending_alert_thread.start()
+                        # sending_alert_thread = threading.Thread(
+                        #     target=send_alert, args=(user["next_of_kin_number"],)
+                        # )
+                        # sending_alert_thread.daemon = True
+                        # sending_alert_thread.start()
 
             else:
                 WARNING_COUNTER = 0
@@ -285,7 +294,7 @@ def vid(user):
 
             cv2.putText(
                 img,
-                user["next_of_kin_number"],
+                current_user["next_of_kin_number"],
                 (5, 30),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
