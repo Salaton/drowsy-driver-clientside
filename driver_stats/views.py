@@ -21,4 +21,4 @@ class StatisticsListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         """Filter by the username.."""
-        return Stats.objects.filter(username=self.request.user)
+        return Stats.objects.filter(user=self.request.user)
