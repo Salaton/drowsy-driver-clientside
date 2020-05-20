@@ -14,6 +14,7 @@ from imutils import face_utils
 from scipy.spatial import distance
 
 from driver_stats.models import Stats
+from users.models import DrowsyDriverUser
 from decouple import config
 
 
@@ -94,7 +95,14 @@ def vid(user):
         #     # time_alarm_raised = time_alarm_raised
         #     car_registration_number=user["car_registration_number"],
         # )
-        statistics = Stats(user=user, eye_aspect_ratio=eye_aspect,)
+        statistics = Stats(
+            user=DrowsyDriverUser.objects.get(username=current_user["username"]),
+            eye_aspect_ratio=eye_aspect,
+        )
+        # statistics = Stats(
+        #     user=current_user,
+        # )
+        # statistics.user = DrowsyDriverUser()
 
         statistics.save()
 
