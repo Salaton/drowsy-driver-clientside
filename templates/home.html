@@ -49,7 +49,7 @@
 </section>
 
 {% comment %} Section 2.. How to go about things... {% endcomment %}
-<section class='section-2'>
+<section class='section-2' id='section-2'>
   <div class="overlay-section-2">
     <div class="inner-section-2">
       <div>
@@ -66,6 +66,65 @@
   </div>
 </section>
 
+<div class="container">
+  <div id="start-section-1" class="starttitle">
+    <span>How to use Bitcoin</span>
+  </div>
+  
+  <div class="start">
+    <div class="start-block">
+      <div class="start-content">
+        <div class="left-column" id='left-column'>
+          <h2 id="inform">
+            Inform yourself</h2>
+          <p>Bitcoin is different than what you know and use every day. Before you start using Bitcoin, there are a few things that you need to know in order to use it securely and avoid common pitfalls.</p>
+          <div>
+            <a class="btn-bright" href="/en/you-need-to-know">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-block">
+      <div class="start-content">
+        <div class="right-column" id='right-column'>
+          <h2 id="choose">
+            Choose your wallet</h2>
+          <p>Free bitcoin wallets are available for all major operating systems and devices to serve a variety of your needs. For example, you can install an app on your mobile device for everyday use or you can have a wallet only for online payments on your computer. In any case, choosing a wallet is easy and can be done in minutes.</p>
+          <div>
+            <a class="btn-bright" href="/en/choose-your-wallet">Choose your wallet</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-block">
+      <div class="start-content">
+        <div class="left-column" id='left-column'>
+          <h2 id="get">
+            Get Bitcoin</h2>
+          <p>You can get Bitcoin by accepting it as a payment for goods and services. There are also several ways you can buy Bitcoin.</p>
+          <div>
+            <a class="btn-bright" href="/en/buy">Buy Bitcoin</a>
+          </div>
+       </div>
+      </div>
+    </div>
+
+    <div class="start-block">
+      <div class="start-content">
+        <div class="right-column" id='right-column'>
+          <h2 id="spend">
+            Spend Bitcoin</h2>
+          <p>There are a growing number of services and merchants accepting Bitcoin all over the world. Use Bitcoin to pay them and rate your experience to help them gain more visibility.</p>
+          <div>
+            <a class="btn-bright" href="/en/spend-bitcoin">Find merchants and products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div> 
 {% comment %} Cards section {% endcomment %}
 {% comment %} <section class='card-section'>
   <div class="container">
@@ -195,6 +254,22 @@
       {% endif %}
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    sr.reveal('#section-2 .inner-section-2',{
+      origin: 'bottom',
+  });
+    
+    sr.reveal('#left-column',{
+    origin: 'left',
+  });
+    
+    sr.reveal('#right-column',{
+    origin: 'right',
+  });
+  </script>
+
+
 </footer>
 
 <script src='{%static "js/three.r95.min.js"%}'></script>
