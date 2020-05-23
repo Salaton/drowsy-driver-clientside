@@ -31,17 +31,17 @@
   <div class="container">
     <div>
       <h2 class="animated shake delay-5s">Drowsy Driver Detection System</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <a href="{% url 'RunOpenCV' %}">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-        Get Started!
-      </button>
-      </a>
+      <div id="typed-strings">
+        <p>Drowsy Driving <span class='type'></span></p>
+      </div>
+      <span id="typed"></span>
+      <div class='pt-8'>
+        <a href="{% url 'RunOpenCV' %}">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded-full">
+          Get Started!
+        </button>
+        </a>
+      </div>
     </div>
     <img src='{%static "img/driving.png"%}' alt='' >
   
@@ -56,10 +56,16 @@
         <h3>We are with you every step of the way</h3>
         <h2>Usalama lazima!</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Globally, road accidents have been a significant issue for quite a while with an ever-raising trend. 
+          It leads to thousands losing their lives while at the same time placing a heavy burden on health services and economic development.
+        </p>
+        <p>
+          Road accidents and road traffic injuries are predicted to increase if road safety is not addressed adequately within the globe and as it stands, 
+          road safety is an issue that gets no close to the attention it deserves.
+        </p>
+        <p>
+          Drowsy driving is a serious problem regarding road safety. 
+          Most of the road accidents can be avoided or their effect can be minimized by taking proper precautions.
         </p>
       </div>
     </div>
@@ -68,7 +74,71 @@
 
 <div class="container">
   <div id="start-section-1" class="starttitle">
-    <span>How to use Bitcoin</span>
+    <span>What leads to drowsy driving?</span>
+  </div>
+  
+  <div class="start">
+    <div class="start-block">
+      <div class="start-content">
+        <div class="left-column" id='left-column'>
+          <h2 id="inform">
+            Lack of enough sleep
+          </h2>
+          <p>
+            Get enough sleep! Adults need 7 or 8 hours of sleep a day, while adolescents need 9 or 10 hours.
+            If you have a sleep disorder, make sure to seek treatment. The less sleep you get, the more likely 
+            you are to fall asleep while driving.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-block">
+      <div class="start-content">
+        <div class="right-column" id='right-column'>
+          <h2 id="choose">
+            Do you work long or during irregular hours? 
+          </h2>
+          <p>
+            Working on a night shift is likely to increase your risk of drowsy driving. Employees working on
+            extended shifts or more than one job are prone to experience sleepiness. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-block">
+      <div class="start-content">
+        <div class="left-column" id='left-column'>
+          <h2 id="get">
+            Medication Side-Effects
+          </h2>
+          <p>
+            Sleepiness is one of the most commonly reported side effects of medications and drugs, 
+            and it’s an important one to note and discuss with your doctor. 
+            Excessive sleepiness can be caused by the sedating effects of nonprescription and prescription medications
+          </p>
+       </div>
+      </div>
+    </div>
+
+    <div class="start-block">
+      <div class="start-content">
+        <div class="right-column" id='right-column'>
+          <h2 id="spend">
+            Naturally occurring circadian factors
+          </h2>
+          <p>
+            This is where our body clock naturally regulates our body to sleep at specific times. There is an increase
+            in the brain's drive to sleep during the mid-afternoons. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="start-section-1" class="starttitle">
+    <span>Benefits of such a system</span>
   </div>
   
   <div class="start">
@@ -125,62 +195,6 @@
     </div>
   </div>
  </div> 
-{% comment %} Cards section {% endcomment %}
-{% comment %} <section class='card-section'>
-  <div class="container">
-    <div class=" row animated bounce inner">
-      <div class="col-sm">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <img class="w-full" src='{%static "img/driving.png"%}' alt="Sunset in the mountains">
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <p class="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <img class="w-full" src='{%static "img/driving.png"%}' alt="Sunset in the mountains">
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <p class="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <img class="w-full" src='{%static "img/driving.png"%}' alt="Sunset in the mountains">
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <p class="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-            </p>
-          </div>
-          <div class="px-6 py-4">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> {% endcomment %}
-
 <section class='cards'>
   <div class='cards-header'>
 			<h1>
@@ -192,38 +206,36 @@
 				points to ensure that your project is successful
 			</p>
 		</div>
-  <div class="container">
+  <div class="container" id='cards-section' >
     
-    {% comment %} <div class=" row animated bounce inner"> {% endcomment %}
-      <div class='box shadow-lg'>
+      <div class='box shadow-lg' id='card-1'>
         <h3>1</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
         </p>
         <img src='{%static "img/drive.png"%}' alt='' height="70" width="70">
       </div>
-      <div class='box shadow-lg box-push-up'>
+      <div class='box shadow-lg box-push-up' id='card-2'>
         <h3>2</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
         </p>
         <img src='{%static "img/woman.png"%}' alt='' height="70" width="70">
       </div>
-      <div class='box shadow-lg'>
+      <div class='box shadow-lg' id='card-3'>
         <h3>3</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
         </p>
         <img src='{%static "img/drive_school.png"%}' alt='' height="70" width="70">
       </div>
-      <div class='box shadow-lg box-push-up'>
+      <div class='box shadow-lg box-push-up' id='card-4'>
         <h3>4</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
         </p>
         <img src='{%static "img/drive.png"%}' alt='' height="70" width="70">
       </div>
-    {% comment %} </div> {% endcomment %}
   </div>
 </section>
 
@@ -256,22 +268,41 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
-    sr.reveal('#section-2 .inner-section-2',{
+    sr.reveal('#section-2 .inner-section-2,.cards #cards-section #card-4',{
       origin: 'bottom',
   });
+
     
-    sr.reveal('#left-column',{
+    sr.reveal('.cards #cards-section #card-2',{
+    origin: 'top',
+  });
+
+   
+    sr.reveal('#left-column,.cards #cards-section #card-1',{
     origin: 'left',
   });
     
-    sr.reveal('#right-column',{
+    sr.reveal('#right-column,.cards #cards-section #card-3',{
     origin: 'right',
   });
   </script>
 
 
 </footer>
-
+<script src='{%static "js/typed.js"%}'></script>
+<script>
+  var typed = new Typed('.type', {
+    strings: [
+      'is as Dangerous as Drunk Driving',
+      'can affect anyone',
+      'kills',
+      'is Preventable'
+    ],
+    backSpeed: 60,
+    typeSpeed: 60,
+    loop:true
+  });
+</script>
 <script src='{%static "js/three.r95.min.js"%}'></script>
 <script src='{%static "js/vanta.net.min.js"%}'></script>
 <script>
@@ -287,6 +318,7 @@ VANTA.NET({
   backgroundColor: 0xffffff
 })
 </script>
+
 
 {% endblock %}
 
