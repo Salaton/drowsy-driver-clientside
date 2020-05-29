@@ -144,6 +144,7 @@
 	/* background: url("../img/dash.jpeg") no-repeat bottom center/cover; */
 	height: 500px;
 	background-color: #fff;
+	font-family: "Zilla Slab", serif;
 }
 .overlay {
 	position: absolute;
@@ -262,7 +263,9 @@
 .starttitle span {
 	font-size: 162%;
 }
-
+#info_container {
+	font-family: "Zilla Slab", serif;
+}
 .start {
 	position: relative;
 	padding-bottom: 175px;
@@ -297,19 +300,19 @@
 }
 
 .start-block:nth-child(1)::after {
-	background: url("../img/drive_school.png") no-repeat;
+	background: url("../img/number1.png") no-repeat;
 }
 
 .start-block:nth-child(2)::after {
-	background: url(../img/getting-started/number-2.svg?1528322191) no-repeat;
+	background: url("../img/number2.png") no-repeat;
 }
 
 .start-block:nth-child(3)::after {
-	background: url(../img/getting-started/number-3.svg?1528322191) no-repeat;
+	background: url("../img/number3.png") no-repeat;
 }
 
 .start-block:nth-child(4)::after {
-	background: url(../img/getting-started/number-4.svg?1528322191) no-repeat;
+	background: url("../img/number4.png") no-repeat;
 }
 
 .start:nth-child(2) {
