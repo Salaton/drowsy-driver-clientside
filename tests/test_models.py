@@ -17,8 +17,7 @@ def test_user_model():
         email="chelsea@gmail.com",
         car_registration_number="kca 234r",
         next_of_kin_name="Emmanuel Marin",
-        next_of_kin_number="+254719158559",
-        # password="chelsea-254",
+        next_of_kin_number=+254719158559,
     )
 
     assert user.first_name == "Chelsea"
@@ -27,7 +26,7 @@ def test_user_model():
     assert user.email == "chelsea@gmail.com"
     assert user.car_registration_number == "kca 234r"
     assert user.next_of_kin_name == "Emmanuel Marin"
-    assert user.next_of_kin_number == "+254719158559"
+    assert user.next_of_kin_number == +254719158559
 
 
 @pytest.mark.django_db
