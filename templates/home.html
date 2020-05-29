@@ -72,7 +72,7 @@
   </div>
 </section>
 
-<div class="container">
+<div class="container" id='info_container'>
   <div id="start-section-1" class="starttitle">
     <span>What leads to drowsy driving?</span>
   </div>
@@ -138,7 +138,7 @@
   </div>
 
   <div id="start-section-1" class="starttitle">
-    <span>Benefits of such a system</span>
+    <span>Benefits of using this system</span>
   </div>
   
   <div class="start">
@@ -146,11 +146,13 @@
       <div class="start-content">
         <div class="left-column" id='left-column'>
           <h2 id="inform">
-            Inform yourself</h2>
-          <p>Bitcoin is different than what you know and use every day. Before you start using Bitcoin, there are a few things that you need to know in order to use it securely and avoid common pitfalls.</p>
-          <div>
-            <a class="btn-bright" href="/en/you-need-to-know">Read more</a>
-          </div>
+            It is a Non-intrusive technique
+          </h2>
+          <p>
+            This approach minimizes driving distractions by using computer vision technology to capture 
+            relevant data from the driver that will be used to compute the drowsiness levels.
+            
+          </p>
         </div>
       </div>
     </div>
@@ -159,11 +161,12 @@
       <div class="start-content">
         <div class="right-column" id='right-column'>
           <h2 id="choose">
-            Choose your wallet</h2>
-          <p>Free bitcoin wallets are available for all major operating systems and devices to serve a variety of your needs. For example, you can install an app on your mobile device for everyday use or you can have a wallet only for online payments on your computer. In any case, choosing a wallet is easy and can be done in minutes.</p>
-          <div>
-            <a class="btn-bright" href="/en/choose-your-wallet">Choose your wallet</a>
-          </div>
+            We Focus on real time detection
+          </h2>
+          <p>
+            By using various parameters over a period of time, 
+            The system is able detects drowsiness in the early stages and activate the alarm before an accident occurs. 
+          </p>
         </div>
       </div>
     </div>
@@ -172,11 +175,12 @@
       <div class="start-content">
         <div class="left-column" id='left-column'>
           <h2 id="get">
-            Get Bitcoin</h2>
-          <p>You can get Bitcoin by accepting it as a payment for goods and services. There are also several ways you can buy Bitcoin.</p>
-          <div>
-            <a class="btn-bright" href="/en/buy">Buy Bitcoin</a>
-          </div>
+            The system is robust and adaptive
+          </h2>
+          <p>
+            The system may be used efficiently for different individuals with different faces and eyelid
+            behaviours. It judges the driver's alertness level on the basis of eyelid movement. 
+          </p>
        </div>
       </div>
     </div>
@@ -185,11 +189,11 @@
       <div class="start-content">
         <div class="right-column" id='right-column'>
           <h2 id="spend">
-            Spend Bitcoin</h2>
-          <p>There are a growing number of services and merchants accepting Bitcoin all over the world. Use Bitcoin to pay them and rate your experience to help them gain more visibility.</p>
-          <div>
-            <a class="btn-bright" href="/en/spend-bitcoin">Find merchants and products</a>
-          </div>
+            Ease of use and Data Collection
+          </h2>
+          <p>
+            The system is quite easy to use as it requires little to no effort to operate it. 
+          </p>
         </div>
       </div>
     </div>
@@ -202,37 +206,44 @@
 				<span>Powered by Technology</span>
 			</h1>
 			<p>
-				Our Artificial Intelligence powered tools use millions of project data
-				points to ensure that your project is successful
+				Our Computer Vision powered system ensures that you are safe from sleep while driving
 			</p>
+      <h2>How it works</h2>
 		</div>
   <div class="container" id='cards-section' >
     
       <div class='box shadow-lg' id='card-1'>
         <h3>1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <p>
+          Create a user account with us <a class="" href="{% url 'signup' %}">Here</a>.  
+        </p>
+        <p>
+          Why? The user needs to have an account so that we can get
+          details of where to send an alert to. 
         </p>
         <img src='{%static "img/drive.png"%}' alt='' height="70" width="70">
       </div>
       <div class='box shadow-lg box-push-up' id='card-2'>
         <h3>2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <p>
+          Start the App. Real time recording will begin. We shall detect the face first, extract the eye region
+          so as to determine drowsiness
         </p>
         <img src='{%static "img/woman.png"%}' alt='' height="70" width="70">
       </div>
       <div class='box shadow-lg' id='card-3'>
         <h3>3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <p>
+          Our Algorithms will actively run behind the scenes while computing the drowsiness
+          levels based on the data gathered from the eyelid activities. 
         </p>
         <img src='{%static "img/drive_school.png"%}' alt='' height="70" width="70">
       </div>
       <div class='box shadow-lg box-push-up' id='card-4'>
         <h3>4</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <p>
+          If drowiness levels are detected, the system will sound an alarm then notify a next of kin / family
+          member
         </p>
         <img src='{%static "img/drive.png"%}' alt='' height="70" width="70">
       </div>
