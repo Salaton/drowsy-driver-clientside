@@ -267,6 +267,7 @@
 #info_container {
 	font-family: "Zilla Slab", serif;
 }
+
 .start {
 	position: relative;
 	padding-bottom: 175px;
@@ -285,7 +286,8 @@
 	height: 100%;
 	-webkit-transform: translate(-50%, 0);
 	transform: translate(-50%, 0);
-	background: url(../img/getting-started/start-path.svg?1528322191) no-repeat;
+	border-left: 2px dotted #444;
+	/* background: url("../img/dot.png") no-repeat; */
 }
 
 .start-block::after {
