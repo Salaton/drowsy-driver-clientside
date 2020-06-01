@@ -26,9 +26,13 @@
   </div>
   </div>
 </nav>
-    <div class='container'>
-      <h1>Welcome to the statistics page init!</h1>
-      <h3>Your stats here</h3>
+    <div class='container' id='stats_container'>
+      <h1>Welcome to the statistics page</h1>
+      <p>
+        This is a visualization of your driving data. Data from this visual comes from the interaction between
+        our system and you as the driver. 
+      
+      </p>
       
       <div style="overflow-x:auto;"> 
       <table class="table-auto">
@@ -51,7 +55,10 @@
             <td class="border px-4 py-2">{{user.car_registration_number}}</td>
           </tr>
           {% empty %}
-            <p>There's nothing to show, perhaps you could get started</p>
+            <p>
+              There is no statistics to show under the user {{user.first_name}}.
+              Perhaps you can get started <a href="{% url 'RunOpenCV' %}">here </a>
+            </p>
           {% endfor %}
         </tbody>
       </table>
