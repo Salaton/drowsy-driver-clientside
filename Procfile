@@ -1,1 +1,1 @@
-web: gunicorn drowsy_driver.wsgi --log-file -
+web gunicorn drowsy_driver.wsgi --log-file -
