@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "9abdsdee0)pf_d6v=oh8av26en_%srpk)a3s7zb%9ek#a&9f6m"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = ["localhost", "drowsy-driver.salaton.now.sh", "now.sh"]
 
