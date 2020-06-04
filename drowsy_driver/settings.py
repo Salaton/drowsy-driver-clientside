@@ -89,17 +89,17 @@ WSGI_APPLICATION = "drowsy_driver.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USER"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST"),
-        "PORT": "",
-    }
-}
-# DATABASES = {"default": dj_database_url.config(default=config("DATABASE_URL"))}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": config("DB_NAME"),
+#         "USER": config("DB_USER"),
+#         "PASSWORD": config("DB_PASSWORD"),
+#         "HOST": config("DB_HOST"),
+#         "PORT": "",
+#     }
+# }
+DATABASES = {"default": dj_database_url.config(default=config("DATABASE_URL"))}
 
 
 # Password validation
@@ -157,8 +157,8 @@ PHONENUMBER_DEFAULT_REGION = "KE"
 # Toggle sandbox mode (when running in DEBUG mode)
 # SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 # Twilio SendGrid
-EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_USER = "salaton@jevenickshades.com"
 EMAIL_HOST_PASSWORD = config("SENDGRID_API_KEY")
