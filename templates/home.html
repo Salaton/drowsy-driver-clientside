@@ -214,20 +214,27 @@
     
       <div class='box shadow-lg' id='card-1'>
         <h3>1</h3>
-        <p>
-          Create a user account with us <a class="" href="{% url 'signup' %}">Here</a>.  
-        </p>
-        <p>
-          Why? The user needs to have an account so that we can get
-          details of where to send an alert to. 
-        </p>
+        {% if user.is_authenticated %}
+          <p>
+          You already have an account with us. You are good to go! 
+          </p>
+        {%else%}
+          <p>
+            Create a user account with us <a class="" href="{% url 'signup' %}">Here</a>.  
+          </p>
+          <p>
+            Why? The user needs to have an account so that we can get
+            details of where to send an alert to. 
+          </p>
+        {%endif%}
+        
         <img src='{%static "img/drive.png"%}' alt='' height="70" width="70">
       </div>
       <div class='box shadow-lg box-push-up' id='card-2'>
         <h3>2</h3>
         <p>
           Start the App. Real time recording will begin. We shall detect the face first, extract the eye region
-          so as to determine drowsiness
+          so as to determine your drowsiness level
         </p>
         <img src='{%static "img/woman.png"%}' alt='' height="70" width="70">
       </div>
@@ -235,7 +242,7 @@
         <h3>3</h3>
         <p>
           Our Algorithms will actively run behind the scenes while computing the drowsiness
-          levels based on the data gathered from the eyelid activities. 
+          levels based on the data gathered from the eyelid movement. 
         </p>
         <img src='{%static "img/drive_school.png"%}' alt='' height="70" width="70">
       </div>
