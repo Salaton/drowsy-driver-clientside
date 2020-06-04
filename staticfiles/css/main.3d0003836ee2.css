@@ -58,7 +58,7 @@
 
 .section-2 {
 	position: relative;
-	background: url("../img/dash.jpeg") no-repeat bottom center/cover;
+	background: url("../img/dash.0e51df496c50.jpeg") no-repeat bottom center/cover;
 	height: 700px;
 	font-family: "Zilla Slab", serif;
 }
@@ -145,7 +145,7 @@
 /* Password reset done */
 .password_reset_done {
 	position: relative;
-	/* background: url("../img/dash.jpeg") no-repeat bottom center/cover; */
+	/* background: url("../img/dash.0e51df496c50.jpeg") no-repeat bottom center/cover; */
 	height: 500px;
 	background-color: #fff;
 	font-family: "Zilla Slab", serif;
@@ -182,7 +182,7 @@
 	max-width: 1300px;
 	justify-content: center;
 	padding-top: 180px;
-	background-image: url("../img/drive_school.png");
+	background-image: url("../img/drive_school.0fea4e90c001.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	/* background-position-x: center; */
@@ -192,7 +192,7 @@
 .box {
 	background-color: #fff;
 	/* border-top: 3px solid black; */
-	/* background-image: url("../img/dash.jpeg"); */
+	/* background-image: url("../img/dash.0e51df496c50.jpeg"); */
 	padding: 30px;
 	position: relative;
 	width: 360px;
@@ -307,7 +307,7 @@
 	-webkit-transform: translate(-50%, 0);
 	transform: translate(-50%, 0);
 	border-left: 2px dotted #444;
-	/* background: url("../img/dot.png") no-repeat; */
+	/* background: url("../img/dot.502e7fce9573.png") no-repeat; */
 }
 
 .start-block::after {
@@ -323,19 +323,19 @@
 }
 
 .start-block:nth-child(1)::after {
-	background: url("../img/number1.png") no-repeat;
+	background: url("../img/number1.a7533e693691.png") no-repeat;
 }
 
 .start-block:nth-child(2)::after {
-	background: url("../img/number2.png") no-repeat;
+	background: url("../img/number2.7f19b15e0317.png") no-repeat;
 }
 
 .start-block:nth-child(3)::after {
-	background: url("../img/number3.png") no-repeat;
+	background: url("../img/number3.40a2b0f856ae.png") no-repeat;
 }
 
 .start-block:nth-child(4)::after {
-	background: url("../img/number4.png") no-repeat;
+	background: url("../img/number4.b232788fbf60.png") no-repeat;
 }
 
 .start:nth-child(2) {
