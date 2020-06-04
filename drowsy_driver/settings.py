@@ -152,13 +152,16 @@ PHONENUMBER_DB_FORMAT = "E164"
 PHONENUMBER_DEFAULT_REGION = "KE"
 
 
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
+
 # EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 # SENDGRID_API_KEY = config("SENDGRID_API_KEY")
 # Toggle sandbox mode (when running in DEBUG mode)
 # SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 # Twilio SendGrid
-EMAIL_HOST = "smtp.sendgrid.net"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "salaton@jevenickshades.com"
-EMAIL_HOST_PASSWORD = config("SENDGRID_API_KEY")
+# EMAIL_HOST = "smtp.sendgrid.net"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = "salaton@jevenickshades.com"
+# EMAIL_HOST_PASSWORD = config("SENDGRID_API_KEY")
