@@ -90,6 +90,8 @@
 
 .inner-section-2 h2 {
 	font-size: 4rem;
+	text-transform: uppercase;
+	color: red;
 }
 /* Cards section... */
 
