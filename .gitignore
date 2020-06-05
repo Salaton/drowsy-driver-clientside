@@ -4,3 +4,13 @@ __pycache__/
 .env
 
 .vercel
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+env.sh
