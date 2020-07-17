@@ -109,9 +109,9 @@ def vid(user):
     """
     # EAR to show a blink. If EAR falls below the threshold and then rises, that's a blink
     """
-    EYE_EAR_THRESH = 0.2
+    EYE_EAR_THRESH = 0.15
     # no of consecutive frames that the eye must be below the threshold
-    EYE_AR_CONSEC_FRAMES = 3
+    EYE_AR_CONSEC_FRAMES = 5
 
     WARNING_COUNTER = 0
     RAISED_ALARM = False
@@ -143,42 +143,6 @@ def vid(user):
     # predictor model
     eye_predictor = dlib.shape_predictor(eye_predictor_path)
 
-    # Classes for exception handling...
-
-    class ManyFaces(Exception):
-        pass
-
-    class NoFaceDetected(Exception):
-        pass
-
-    # To get the eye landmarks from the video
-
-    def get_eyeLandmarks(vid):
-        # Array that has detected faces
-        rects = faceDetector(vid, 1)
-
-        if len(rects) > 1:
-            raise ManyFaces
-        if len(rects) == 0:
-            raise NoFaceDetected
-
-        return numpy.matrix([[p.x, p.y] for p in eye_predictor(vid, rects[0]).parts()])
-
-    # Here we plot the numbers on the eyes
-
-    def plot_numberOnEyes(vid, landmarks):
-        vid = vid.copy()
-        for index, point in enumerate(landmarks):
-            position = (point[0, 0], point[0, 1])
-            cv2.putText(
-                vid,
-                str(index),
-                position,
-                fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                fontScale=0.4,
-                color=(255, 255, 255),
-            )
-            cv2.circle(vid, position, 3, color=(255, 255, 255))
 
     # Start looping over the frames
     while True:
@@ -268,11 +232,11 @@ def vid(user):
                         posting_db_thread.daemon = True
                         posting_db_thread.start()
 
-                        # sending_alert_thread = threading.Thread(
-                        #     target=send_alert, args=(user["next_of_kin_number"],)
-                        # )
-                        # sending_alert_thread.daemon = True
-                        # sending_alert_thread.start()
+                        sending_alert_thread = threading.Thread(
+                            target=send_alert, args=(user["next_of_kin_number"],)
+                        )
+                        sending_alert_thread.daemon = True
+                        sending_alert_thread.start()
 
             else:
                 WARNING_COUNTER = 0
@@ -294,11 +258,11 @@ def vid(user):
 
             cv2.putText(
                 img,
-                current_user["next_of_kin_number"],
-                (5, 30),
+                current_user["first_name"],
+                (10, 30),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 1,
-                (0, 0, 255),
+                (0, 255, 0),
                 2,
             )
             # cv2.putText(img, driverprofile.regNo, (x, y+h+60),
